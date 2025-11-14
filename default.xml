@@ -2,8 +2,6 @@
 <manifest>
   <remote name="microrice-x6a" fetch="https://github.com/microrice-x6a/" />
   <remote name="phh" fetch="https://github.com/phhusson/" />
-  <!-- <remote name="LineageOS" fetch="https://github.com/LineageOS/" /> -->
-  <default remote="phh" revision="android-9.0" sync-j="4" />
 
   <project path="build_scripts" name="build_scripts" remote="microrice-x6a" revision="main" />
   <project path="treble_experimentations" name="treble_experimentations" remote="microrice-x6a" revision="master" />
