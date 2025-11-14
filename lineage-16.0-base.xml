@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="github"
+           fetch=".."
+           review="review.lineageos.org" />
+
+  <remote  name="private"
+           fetch="ssh://git@github.com" />
+
+  <remote  name="aosp"
+           fetch="https://android.googlesource.com"
+           review="android-review.googlesource.com"
+           revision="refs/tags/android-9.0.0_r46" />
+
+  <default revision="refs/heads/lineage-16.0"
+           remote="github"
+           sync-c="true"
+           sync-j="4" />
+
+  <!-- AOSP Projects -->
+
+  <project path="LineageOS-16.x/build/make" name="LineageOS/android_build" groups="pdk" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="LineageOS-16.x/build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" remote="aosp" />
+  <project path="LineageOS-16.x/build/kati" name="LineageOS/android_build_kati" groups="pdk,tradefed" />
+  <project path="LineageOS-16.x/build/soong" name="LineageOS/android_build_soong" groups="pdk,tradefed" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="LineageOS-16.x/art" name="LineageOS/android_art" groups="pdk" />
+  <project path="LineageOS-16.x/bionic" name="LineageOS/android_bionic" groups="pdk" />
+  <project path="LineageOS-16.x/bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
+  <project path="LineageOS-16.x/compatibility/cdd" name="platform/compatibility/cdd" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/cts" name="platform/cts" groups="cts,pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/dalvik" name="LineageOS/android_dalvik" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/developers/build" name="platform/developers/build" groups="developers" remote="aosp" />
+  <project path="LineageOS-16.x/development" name="LineageOS/android_development" groups="developers,pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/device/common" name="device/common" groups="pdk-cw-fs,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/arm64" name="device/generic/arm64" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/armv7-a-neon" name="device/generic/armv7-a-neon" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/car" name="device/generic/car" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/common" name="device/generic/common" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/goldfish" name="LineageOS/android_device_generic_goldfish" groups="pdk" />
+  <project path="LineageOS-16.x/device/generic/goldfish-opengl" name="device/generic/goldfish-opengl" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/mini-emulator-arm64" name="device/generic/mini-emulator-arm64" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/mini-emulator-armv7-a-neon" name="device/generic/mini-emulator-armv7-a-neon" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/mini-emulator-x86" name="device/generic/mini-emulator-x86" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/mini-emulator-x86_64" name="device/generic/mini-emulator-x86_64" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/qemu" name="device/generic/qemu" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/uml" name="device/generic/uml" groups="device,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/x86" name="device/generic/x86" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/generic/x86_64" name="device/generic/x86_64" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/google/atv" name="LineageOS/android_device_google_atv" groups="device,broadcom_pdk,generic_fs,pdk" />
+  <project path="LineageOS-16.x/device/google/contexthub" name="device/google/contexthub" groups="device,marlin,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/device/sample" name="device/sample" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/aac" name="LineageOS/android_external_aac" groups="pdk" />
+  <project path="LineageOS-16.x/external/abi-compliance-checker" name="platform/external/abi-compliance-checker" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/abi-dumper" name="platform/external/abi-dumper" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/adhd" name="platform/external/adhd" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/adt-infra" name="platform/external/adt-infra" groups="adt-infra,notdefault,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/android-clat" name="platform/external/android-clat" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/androidplot" name="platform/external/androidplot" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/annotation-tools" name="platform/external/annotation-tools" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/ant-glob" name="platform/external/ant-glob" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/antlr" name="platform/external/antlr" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/apache-commons-math" name="platform/external/apache-commons-math" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/apache-harmony" name="platform/external/apache-harmony" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/apache-http" name="platform/external/apache-http" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/apache-xml" name="platform/external/apache-xml" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/archive-patcher" name="platform/external/archive-patcher" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/arm-neon-tests" name="platform/external/arm-neon-tests" groups="vendor" remote="aosp" />
+  <project path="LineageOS-16.x/external/autotest" name="platform/external/autotest" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/avb" name="platform/external/avb" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/bart" name="platform/external/bart" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/blktrace" name="platform/external/blktrace" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/boringssl" name="platform/external/boringssl" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/bouncycastle" name="platform/external/bouncycastle" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/brotli" name="platform/external/brotli" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/bsdiff" name="platform/external/bsdiff" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/bzip2" name="platform/external/bzip2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/caliper" name="platform/external/caliper" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/capstone" name="platform/external/capstone" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/cblas" name="platform/external/cblas" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/chromium-libpac" name="LineageOS/android_external_chromium-libpac" groups="pdk" />
+  <project path="LineageOS-16.x/external/chromium-trace" name="platform/external/chromium-trace" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/chromium-webview" name="LineageOS/android_external_chromium-webview" groups="pdk" revision="master" clone-depth="1" />
+  <project path="LineageOS-16.x/external/clang" name="platform/external/clang" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/cmockery" name="platform/external/cmockery" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/cn-cbor" name="platform/external/cn-cbor" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/compiler-rt" name="platform/external/compiler-rt" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/conscrypt" name="platform/external/conscrypt" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/crcalc" name="platform/external/crcalc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/cros/system_api" name="platform/external/cros/system_api" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/curl" name="LineageOS/android_external_curl" groups="pdk" remote="github" />
+  <project path="LineageOS-16.x/external/dagger2" name="platform/external/dagger2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/deqp" name="platform/external/deqp" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/desugar" name="platform/external/desugar" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/devlib" name="platform/external/devlib" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/dexmaker" name="platform/external/dexmaker" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/dhcpcd-6.8.2" name="platform/external/dhcpcd-6.8.2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/dlmalloc" name="platform/external/dlmalloc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/dng_sdk" name="LineageOS/android_external_dng_sdk" groups="pdk" />
+  <project path="LineageOS-16.x/external/dnsmasq" name="LineageOS/android_external_dnsmasq" groups="pdk" />
+  <project path="LineageOS-16.x/external/doclava" name="platform/external/doclava" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/drm_gralloc" name="platform/external/drm_gralloc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/drm_hwcomposer" name="platform/external/drm_hwcomposer" groups="drm_hwcomposer,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/droiddriver" name="platform/external/droiddriver" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/drrickorang" name="platform/external/drrickorang" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/dtc" name="platform/external/dtc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/e2fsprogs" name="LineageOS/android_external_e2fsprogs" groups="pdk" />
+  <project path="LineageOS-16.x/external/easymock" name="platform/external/easymock" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/eigen" name="platform/external/eigen" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/elfutils" name="LineageOS/android_external_elfutils" groups="pdk" />
+  <project path="LineageOS-16.x/external/emma" name="platform/external/emma" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/error_prone" name="platform/external/error_prone" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/esd" name="platform/external/esd" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/expat" name="platform/external/expat" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/eyes-free" name="platform/external/eyes-free" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/f2fs-tools" name="LineageOS/android_external_f2fs-tools" groups="pdk" />
+  <project path="LineageOS-16.x/external/fdlibm" name="platform/external/fdlibm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/fec" name="platform/external/fec" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/fio" name="platform/external/fio" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/flac" name="platform/external/flac" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/flatbuffers" name="platform/external/flatbuffers" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/fonttools" name="platform/external/fonttools" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/freetype" name="LineageOS/android_external_freetype" groups="pdk" />
+  <project path="LineageOS-16.x/external/fsck_msdos" name="LineageOS/android_external_fsck_msdos" groups="pdk" />
+  <project path="LineageOS-16.x/external/gemmlowp" name="platform/external/gemmlowp" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/gflags" name="platform/external/gflags" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/giflib" name="platform/external/giflib" groups="pdk,qcom_msm8x26" remote="aosp" />
+  <project path="LineageOS-16.x/external/glide" name="platform/external/glide" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/golang-protobuf" name="platform/external/golang-protobuf" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-benchmark" name="platform/external/google-benchmark" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-breakpad" name="platform/external/google-breakpad" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-fonts/carrois-gothic-sc" name="platform/external/google-fonts/carrois-gothic-sc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-fonts/coming-soon" name="platform/external/google-fonts/coming-soon" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-fonts/cutive-mono" name="platform/external/google-fonts/cutive-mono" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-fonts/dancing-script" name="platform/external/google-fonts/dancing-script" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-styleguide" name="platform/external/google-styleguide" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/google-tv-pairing-protocol" name="platform/external/google-tv-pairing-protocol" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/googletest" name="platform/external/googletest" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/gptfdisk" name="LineageOS/android_external_gptfdisk" groups="pdk" />
+  <project path="LineageOS-16.x/external/guava" name="platform/external/guava" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/guice" name="platform/external/guice" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/hamcrest" name="platform/external/hamcrest" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/harfbuzz_ng" name="platform/external/harfbuzz_ng" groups="pdk,qcom_msm8x26" remote="aosp" />
+  <project path="LineageOS-16.x/external/honggfuzz" name="platform/external/honggfuzz" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/hyphenation-patterns" name="platform/external/hyphenation-patterns" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/icu" name="LineageOS/android_external_icu" groups="pdk" />
+  <project path="LineageOS-16.x/external/ImageMagick" name="LineageOS/android_external_ImageMagick" groups="pdk" />
+  <project path="LineageOS-16.x/external/ims" name="platform/external/ims" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/iproute2" name="platform/external/iproute2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/ipsec-tools" name="platform/external/ipsec-tools" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/iptables" name="platform/external/iptables" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/iputils" name="platform/external/iputils" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/iw" name="platform/external/iw" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jacoco" name="platform/external/jacoco" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jarjar" name="platform/external/jarjar" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/javaparser" name="platform/external/javaparser" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/javasqlite" name="platform/external/javasqlite" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/javassist" name="platform/external/javassist" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jcommander" name="platform/external/jcommander" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jdiff" name="platform/external/jdiff" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jemalloc" name="platform/external/jemalloc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jline" name="platform/external/jline" groups="pdk,tradefed,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/jmdns" name="platform/external/jmdns" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jsilver" name="platform/external/jsilver" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jsmn" name="platform/external/jsmn" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jsoncpp" name="platform/external/jsoncpp" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jsr305" name="platform/external/jsr305" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/jsr330" name="platform/external/jsr330" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/junit" name="platform/external/junit" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/junit-params" name="platform/external/junit-params" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/kernel-headers" name="platform/external/kernel-headers" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/kmod" name="platform/external/kmod" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/kotlinc" name="platform/external/kotlinc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/ksoap2" name="platform/external/ksoap2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libavc" name="LineageOS/android_external_libavc" groups="pdk" />
+  <project path="LineageOS-16.x/external/libbackup" name="platform/external/libbackup" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libbrillo" name="LineageOS/android_external_libbrillo" groups="pdk" remote="github" />
+  <project path="LineageOS-16.x/external/libcap" name="platform/external/libcap" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libcap-ng" name="platform/external/libcap-ng" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libchrome" name="LineageOS/android_external_libchrome" groups="pdk" remote="github" />
+  <project path="LineageOS-16.x/external/libconstrainedcrypto" name="platform/external/libconstrainedcrypto" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libcups" name="LineageOS/android_external_libcups" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/external/libcxx" name="LineageOS/android_external_libcxx" groups="pdk" />
+  <project path="LineageOS-16.x/external/libcxxabi" name="platform/external/libcxxabi" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libdaemon" name="platform/external/libdaemon" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libdivsufsort" name="platform/external/libdivsufsort" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libdrm" name="platform/external/libdrm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libedit" name="platform/external/libedit" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libese" name="platform/external/libese" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libevent" name="platform/external/libevent" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libexif" name="LineageOS/android_external_libexif" groups="pdk" />
+  <project path="LineageOS-16.x/external/libffi" name="platform/external/libffi" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libgsm" name="platform/external/libgsm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libhevc" name="LineageOS/android_external_libhevc" groups="pdk" />
+  <project path="LineageOS-16.x/external/libjpeg-turbo" name="LineageOS/android_external_libjpeg-turbo" groups="pdk" />
+  <project path="LineageOS-16.x/external/libldac" name="platform/external/libldac" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libmicrohttpd" name="platform/external/libmicrohttpd" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libmojo" name="platform/external/libmojo" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libmpeg2" name="platform/external/libmpeg2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libmtp" name="platform/external/libmtp" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libnetfilter_conntrack" name="platform/external/libnetfilter_conntrack" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libnfnetlink" name="platform/external/libnfnetlink" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libnl" name="platform/external/libnl" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libogg" name="platform/external/libogg" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libopus" name="platform/external/libopus" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libpcap" name="platform/external/libpcap" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libphonenumber" name="platform/external/libphonenumber" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libpng" name="LineageOS/android_external_libpng" groups="pdk" />
+  <project path="LineageOS-16.x/external/libtextclassifier" name="LineageOS/android_external_libtextclassifier" groups="pdk" />
+  <project path="LineageOS-16.x/external/libunwind" name="platform/external/libunwind" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libunwind_llvm" name="platform/external/libunwind_llvm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libusb" name="platform/external/libusb" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libusb-compat" name="platform/external/libusb-compat" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libvncserver" name="platform/external/libvncserver" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libvpx" name="platform/external/libvpx" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libvterm" name="platform/external/libvterm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libxaac" name="platform/external/libxaac" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libxcam" name="platform/external/libxcam" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libxkbcommon" name="platform/external/libxkbcommon" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/libxml2" name="platform/external/libxml2" groups="pdk,libxml2" remote="aosp" />
+  <project path="LineageOS-16.x/external/libyuv" name="platform/external/libyuv" groups="pdk,libyuv" remote="aosp" />
+  <project path="LineageOS-16.x/external/linux-kselftest" name="platform/external/linux-kselftest" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/lisa" name="platform/external/lisa" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/llvm" name="platform/external/llvm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/lmfit" name="platform/external/lmfit" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/ltp" name="platform/external/ltp" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/lz4" name="platform/external/lz4" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/lzma" name="platform/external/lzma" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/markdown" name="platform/external/markdown" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mdnsresponder" name="platform/external/mdnsresponder" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mesa3d" name="platform/external/mesa3d" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/Microsoft-GSL" name="platform/external/Microsoft-GSL" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/minijail" name="platform/external/minijail" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mksh" name="LineageOS/android_external_mksh" groups="pdk" />
+  <project path="LineageOS-16.x/external/mmc-utils" name="platform/external/mmc-utils" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mockftpserver" name="platform/external/mockftpserver" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mockito" name="platform/external/mockito" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mockwebserver" name="platform/external/mockwebserver" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/modp_b64" name="platform/external/modp_b64" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mp4parser" name="platform/external/mp4parser" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/mtpd" name="platform/external/mtpd" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nanohttpd" name="platform/external/nanohttpd" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nanopb-c" name="platform/external/nanopb-c" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/naver-fonts" name="platform/external/naver-fonts" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/netcat" name="platform/external/netcat" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/neven" name="platform/external/neven" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nfacct" name="platform/external/nfacct" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nist-pkits" name="platform/external/nist-pkits" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nist-sip" name="platform/external/nist-sip" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nos/host/android" name="platform/external/nos/host/android" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nos/host/generic" name="platform/external/nos/host/generic" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/nos/test/system-test-harness" name="platform/external/nos/test/system-test-harness" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/noto-fonts" name="platform/external/noto-fonts" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/oauth" name="platform/external/oauth" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/objenesis" name="platform/external/objenesis" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/oj-libjdwp" name="platform/external/oj-libjdwp" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/okhttp" name="LineageOS/android_external_okhttp" groups="pdk" />
+  <project path="LineageOS-16.x/external/one-true-awk" name="LineageOS/android_external_one-true-awk" groups="pdk" />
+  <project path="LineageOS-16.x/external/owasp/sanitizer" name="platform/external/owasp/sanitizer" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/parameter-framework" name="platform/external/parameter-framework" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/pcre" name="platform/external/pcre" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/pdfium" name="platform/external/pdfium" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/perf_data_converter" name="platform/external/perf_data_converter" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/perfetto" name="LineageOS/android_external_perfetto" groups="pdk" />
+  <project path="LineageOS-16.x/external/piex" name="platform/external/piex" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/ply" name="platform/external/ply" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/ppp" name="LineageOS/android_external_ppp" groups="pdk" />
+  <project path="LineageOS-16.x/external/proguard" name="LineageOS/android_external_proguard" groups="pdk" />
+  <project path="LineageOS-16.x/external/protobuf" name="platform/external/protobuf" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/puffin" name="LineageOS/android_external_puffin" groups="pdk" remote="github" />
+  <project path="LineageOS-16.x/external/python/cpython2" name="platform/external/python/cpython2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/python/cpython3" name="platform/external/python/cpython3" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/python/futures" name="platform/external/python/futures" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/rappor" name="platform/external/rappor" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/replicaisland" name="platform/external/replicaisland" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/rmi4utils" name="platform/external/rmi4utils" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/robolectric" name="platform/external/robolectric" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/robolectric-shadows" name="platform/external/robolectric-shadows" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/roboto-fonts" name="platform/external/roboto-fonts" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/rootdev" name="platform/external/rootdev" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/safe-iop" name="platform/external/safe-iop" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/scapy" name="platform/external/scapy" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/scrypt" name="platform/external/scrypt" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/seccomp-tests" name="platform/external/seccomp-tests" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/selinux" name="LineageOS/android_external_selinux" groups="pdk" />
+  <project path="LineageOS-16.x/external/sfntly" name="platform/external/sfntly" groups="pdk,qcom_msm8x26" remote="aosp" />
+  <project path="LineageOS-16.x/external/shaderc/spirv-headers" name="platform/external/shaderc/spirv-headers" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/shflags" name="platform/external/shflags" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/skia" name="LineageOS/android_external_skia" groups="pdk,qcom_msm8x26" />
+  <project path="LineageOS-16.x/external/skqp" name="platform/external/skqp" groups="cts" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/external/sl4a" name="platform/external/sl4a" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/slf4j" name="platform/external/slf4j" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/smali" name="platform/external/smali" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/snakeyaml" name="platform/external/snakeyaml" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/sonic" name="platform/external/sonic" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/sonivox" name="LineageOS/android_external_sonivox" groups="pdk" />
+  <project path="LineageOS-16.x/external/speex" name="platform/external/speex" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/spirv-llvm" name="platform/external/spirv-llvm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/sqlite" name="LineageOS/android_external_sqlite" groups="pdk" />
+  <project path="LineageOS-16.x/external/squashfs-tools" name="platform/external/squashfs-tools" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/strace" name="platform/external/strace" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/stressapptest" name="platform/external/stressapptest" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/subsampling-scale-image-view" name="platform/external/subsampling-scale-image-view" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/external/swiftshader" name="platform/external/swiftshader" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/syslinux" name="platform/external/syslinux" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/tagsoup" name="platform/external/tagsoup" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/tcpdump" name="platform/external/tcpdump" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/tensorflow" name="platform/external/tensorflow" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/testng" name="platform/external/testng" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/timezonepicker-support" name="platform/external/timezonepicker-support" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/tinyalsa" name="platform/external/tinyalsa" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/tinycompress" name="LineageOS/android_external_tinycompress" groups="pdk" />
+  <project path="LineageOS-16.x/external/tinyxml" name="platform/external/tinyxml" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/tinyxml2" name="platform/external/tinyxml2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/toolchain-utils" name="platform/external/toolchain-utils" remote="aosp" />
+  <project path="LineageOS-16.x/external/toybox" name="LineageOS/android_external_toybox" groups="pdk" />
+  <project path="LineageOS-16.x/external/tpm2" name="platform/external/tpm2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/trappy" name="platform/external/trappy" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/tremolo" name="LineageOS/android_external_tremolo" groups="pdk" />
+  <project path="LineageOS-16.x/external/turbine" name="platform/external/turbine" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/unicode" name="platform/external/unicode" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/universal-tween-engine" name="platform/external/universal-tween-engine" remote="aosp" />
+  <project path="LineageOS-16.x/external/v4l2_codec2" name="platform/external/v4l2_codec2" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/v8" name="LineageOS/android_external_v8" groups="pdk" />
+  <project path="LineageOS-16.x/external/valgrind" name="platform/external/valgrind" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/vboot_reference" name="platform/external/vboot_reference" groups="vboot,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/external/vixl" name="platform/external/vixl" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/vogar" name="platform/external/vogar" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/volley" name="platform/external/volley" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/vulkan-validation-layers" name="platform/external/vulkan-validation-layers" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/walt" name="platform/external/walt" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/wayland" name="platform/external/wayland" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/wayland-protocols" name="platform/external/wayland-protocols" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/webp" name="platform/external/webp" groups="pdk,qcom_msm8x26" remote="aosp" />
+  <project path="LineageOS-16.x/external/webrtc" name="platform/external/webrtc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/webview_support_interfaces" name="platform/external/webview_support_interfaces" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/wpa_supplicant_8" name="LineageOS/android_external_wpa_supplicant_8" groups="pdk" />
+  <project path="LineageOS-16.x/external/wycheproof" name="platform/external/wycheproof" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/x264" name="platform/external/x264" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/xmlrpcpp" name="platform/external/xmlrpcpp" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/xmp_toolkit" name="platform/external/xmp_toolkit" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/xz-embedded" name="platform/external/xz-embedded" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/zlib" name="LineageOS/android_external_zlib" groups="pdk" />
+  <project path="LineageOS-16.x/external/zopfli" name="platform/external/zopfli" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/external/zxing" name="platform/external/zxing" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/av" name="LineageOS/android_frameworks_av" groups="pdk" />
+  <project path="LineageOS-16.x/frameworks/base" name="LineageOS/android_frameworks_base" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/frameworks/compile/libbcc" name="platform/frameworks/compile/libbcc" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/compile/mclinker" name="platform/frameworks/compile/mclinker" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/compile/slang" name="platform/frameworks/compile/slang" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/data-binding" name="platform/frameworks/data-binding" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/ex" name="platform/frameworks/ex" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/hardware/interfaces" name="LineageOS/android_frameworks_hardware_interfaces" groups="pdk" />
+  <project path="LineageOS-16.x/frameworks/layoutlib" name="platform/frameworks/layoutlib" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/minikin" name="LineageOS/android_frameworks_minikin" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/frameworks/ml" name="platform/frameworks/ml" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/multidex" name="platform/frameworks/multidex" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/native" name="LineageOS/android_frameworks_native" groups="pdk" />
+  <project path="LineageOS-16.x/frameworks/opt/bitmap" name="platform/frameworks/opt/bitmap" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/calendar" name="platform/frameworks/opt/calendar" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/car/services" name="platform/frameworks/opt/car/services" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/car/setupwizard" name="platform/frameworks/opt/car/setupwizard" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/chips" name="platform/frameworks/opt/chips" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/colorpicker" name="platform/frameworks/opt/colorpicker" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/datetimepicker" name="LineageOS/android_frameworks_opt_datetimepicker" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/frameworks/opt/inputconnectioncommon" name="platform/frameworks/opt/inputconnectioncommon" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/inputmethodcommon" name="platform/frameworks/opt/inputmethodcommon" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/net/ethernet" name="platform/frameworks/opt/net/ethernet" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/net/ims" name="platform/frameworks/opt/net/ims" groups="frameworks_ims,pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/net/lowpan" name="platform/frameworks/opt/net/lowpan" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/net/voip" name="LineageOS/android_frameworks_opt_net_voip" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/frameworks/opt/net/wifi" name="LineageOS/android_frameworks_opt_net_wifi" groups="pdk" />
+  <project path="LineageOS-16.x/frameworks/opt/photoviewer" name="platform/frameworks/opt/photoviewer" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/setupwizard" name="platform/frameworks/opt/setupwizard" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/telephony" name="LineageOS/android_frameworks_opt_telephony" groups="pdk" />
+  <project path="LineageOS-16.x/frameworks/opt/timezonepicker" name="platform/frameworks/opt/timezonepicker" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/opt/vcard" name="platform/frameworks/opt/vcard" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/rs" name="platform/frameworks/rs" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/support" name="platform/frameworks/support" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/frameworks/wilhelm" name="platform/frameworks/wilhelm" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/akm" name="platform/hardware/akm" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/broadcom/libbt" name="LineageOS/android_hardware_broadcom_libbt" groups="pdk" />
+  <project path="LineageOS-16.x/hardware/broadcom/wlan" name="LineageOS/android_hardware_broadcom_wlan" groups="pdk,broadcom_wlan" />
+  <project path="LineageOS-16.x/hardware/google/apf" name="platform/hardware/google/apf" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/google/av" name="LineageOS/android_hardware_google_av" groups="pdk" />
+  <project path="LineageOS-16.x/hardware/google/easel" name="platform/hardware/google/easel" groups="pdk,easel" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/google/interfaces" name="platform/hardware/google/interfaces" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/google/pixel" name="platform/hardware/google/pixel" groups="bonito,crosshatch" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/audio_media" name="platform/hardware/intel/audio_media" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/bootstub" name="LineageOS/android_hardware_intel_bootstub" groups="intel,pdk" remote="github" />
+  <project path="LineageOS-16.x/hardware/intel/common/bd_prov" name="platform/hardware/intel/common/bd_prov" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/common/libmix" name="LineageOS/android_hardware_intel_common_libmix" groups="intel,pdk" remote="github" />
+  <project path="LineageOS-16.x/hardware/intel/common/libstagefrighthw" name="platform/hardware/intel/common/libstagefrighthw" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/common/libva" name="platform/hardware/intel/common/libva" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/common/libwsbm" name="platform/hardware/intel/common/libwsbm" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/common/omx-components" name="platform/hardware/intel/common/omx-components" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/common/utils" name="LineageOS/android_hardware_intel_common_utils" groups="intel,pdk" remote="github" />
+  <project path="LineageOS-16.x/hardware/intel/common/wrs_omxil_core" name="platform/hardware/intel/common/wrs_omxil_core" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/img/hwcomposer" name="LineageOS/android_hardware_intel_img_hwcomposer" groups="intel,pdk" remote="github" />
+  <project path="LineageOS-16.x/hardware/intel/img/psb_headers" name="platform/hardware/intel/img/psb_headers" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/intel/img/psb_video" name="platform/hardware/intel/img/psb_video" groups="intel,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/interfaces" name="LineageOS/android_hardware_interfaces" groups="pdk" />
+  <project path="LineageOS-16.x/hardware/invensense" name="platform/hardware/invensense" groups="invensense,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/libhardware" name="LineageOS/android_hardware_libhardware" groups="pdk" />
+  <project path="LineageOS-16.x/hardware/libhardware_legacy" name="LineageOS/android_hardware_libhardware_legacy" groups="pdk" />
+  <project path="LineageOS-16.x/hardware/marvell/bt" name="platform/hardware/marvell/bt" groups="marvell_bt,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/nxp/nfc" name="LineageOS/android_hardware_nxp_nfc" groups="pdk" />
+  <project path="LineageOS-16.x/hardware/nxp/secure_element" name="platform/hardware/nxp/secure_element" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/qcom/audio/default" name="LineageOS/android_hardware_qcom_audio" groups="qcom,qcom_audio,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/bootctrl" name="LineageOS/android_hardware_qcom_bootctrl" groups="pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/bt" name="LineageOS/android_hardware_qcom_bt" groups="qcom,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/camera" name="LineageOS/android_hardware_qcom_camera" groups="qcom_camera,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/data/ipacfg-mgr" name="LineageOS/android_hardware_qcom_data_ipacfg-mgr" groups="qcom,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/display" name="LineageOS/android_hardware_qcom_display" groups="pdk-qcom,qcom,qcom_display" />
+  <project path="LineageOS-16.x/hardware/qcom/gps" name="LineageOS/android_hardware_qcom_gps" groups="qcom,qcom_gps,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/keymaster" name="LineageOS/android_hardware_qcom_keymaster" groups="qcom,qcom_keymaster,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/media" name="LineageOS/android_hardware_qcom_media" groups="qcom,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/qcom/neuralnetworks/hvxservice" name="platform/hardware/qcom/neuralnetworks/hvxservice" groups="wahoo" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm710/data/ipacfg-mgr" name="platform/hardware/qcom/sdm710/data/ipacfg-mgr" groups="vendor,qcom_sdm710" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm710/display" name="LineageOS/android_hardware_qcom_sdm710_display" groups="qcom_sdm710" >
+    <linkfile src="os_pickup.mk" dest="hardware/qcom/sdm710/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom/sdm710/Android.bp" />
+  </project>
+  <project path="LineageOS-16.x/hardware/qcom/sdm710/gps" name="platform/hardware/qcom/sdm710/gps" groups="qcom_sdm710" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm710/media" name="platform/hardware/qcom/sdm710/media" groups="qcom_sdm710" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm710/thermal" name="platform/hardware/qcom/sdm710/thermal" groups="qcom_sdm710" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm710/vr" name="platform/hardware/qcom/sdm710/vr" groups="qcom_sdm710" remote="aosp" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm845/bt" name="LineageOS/android_hardware_qcom_sdm845_bt" groups="qcom_sdm845" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm845/data/ipacfg-mgr" name="LineageOS/android_hardware_qcom_sdm845_data_ipacfg-mgr" groups="vendor,qcom_sdm845" >
+    <linkfile src="os_pickup.mk" dest="hardware/qcom/sdm845/Android.mk" />
+    <linkfile dest="hardware/qcom/sdm845/Android.bp" src="os_pickup.bp" />
+  </project>
+  <project path="LineageOS-16.x/hardware/qcom/sdm845/display" name="LineageOS/android_hardware_qcom_sdm845_display" groups="qcom_sdm845" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm845/gps" name="LineageOS/android_hardware_qcom_sdm845_gps" groups="qcom_sdm845" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm845/media" name="LineageOS/android_hardware_qcom_sdm845_media" groups="qcom_sdm845" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm845/thermal" name="LineageOS/android_hardware_qcom_sdm845_thermal" groups="qcom_sdm845" />
+  <project path="LineageOS-16.x/hardware/qcom/sdm845/vr" name="LineageOS/android_hardware_qcom_sdm845_vr" groups="qcom_sdm845" />
+  <project path="LineageOS-16.x/hardware/qcom/wlan" name="LineageOS/android_hardware_qcom_wlan" groups="qcom_wlan,pdk-qcom" />
+  <project path="LineageOS-16.x/hardware/ril" name="LineageOS/android_hardware_ril" groups="pdk" />
+  <project path="LineageOS-16.x/kernel/configs" name="kernel/configs" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/kernel/tests" name="kernel/tests" remote="aosp" />
+  <project path="LineageOS-16.x/libcore" name="LineageOS/android_libcore" groups="pdk" />
+  <project path="LineageOS-16.x/libnativehelper" name="platform/libnativehelper" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/BasicSmsReceiver" name="LineageOS/android_packages_apps_BasicSmsReceiver" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Bluetooth" name="LineageOS/android_packages_apps_Bluetooth" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Calendar" name="LineageOS/android_packages_apps_Calendar" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Camera2" name="LineageOS/android_packages_apps_Camera2" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Car/Dialer" name="platform/packages/apps/Car/Dialer" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Hvac" name="platform/packages/apps/Car/Hvac" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/LatinIME" name="platform/packages/apps/Car/LatinIME" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Launcher" name="platform/packages/apps/Car/Launcher" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/LensPicker" name="platform/packages/apps/Car/LensPicker" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/LocalMediaPlayer" name="platform/packages/apps/Car/LocalMediaPlayer" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Media" name="platform/packages/apps/Car/Media" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Messenger" name="platform/packages/apps/Car/Messenger" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Overview" name="platform/packages/apps/Car/Overview" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Radio" name="platform/packages/apps/Car/Radio" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Settings" name="platform/packages/apps/Car/Settings" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/Stream" name="platform/packages/apps/Car/Stream" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/SystemUpdater" name="platform/packages/apps/Car/SystemUpdater" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Car/libs" name="platform/packages/apps/Car/libs" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/CarrierConfig" name="LineageOS/android_packages_apps_CarrierConfig" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/CellBroadcastReceiver" name="LineageOS/android_packages_apps_CellBroadcastReceiver" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/CertInstaller" name="LineageOS/android_packages_apps_CertInstaller" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Contacts" name="LineageOS/android_packages_apps_Contacts" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/DeskClock" name="LineageOS/android_packages_apps_DeskClock" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Dialer" name="LineageOS/android_packages_apps_Dialer" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/DocumentsUI" name="LineageOS/android_packages_apps_DocumentsUI" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Email" name="LineageOS/android_packages_apps_Email" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/EmergencyInfo" name="LineageOS/android_packages_apps_EmergencyInfo" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/ExactCalculator" name="LineageOS/android_packages_apps_ExactCalculator" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Gallery2" name="LineageOS/android_packages_apps_Gallery2" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/HTMLViewer" name="LineageOS/android_packages_apps_HTMLViewer" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/KeyChain" name="LineageOS/android_packages_apps_KeyChain" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/ManagedProvisioning" name="LineageOS/android_packages_apps_ManagedProvisioning" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Messaging" name="LineageOS/android_packages_apps_Messaging" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Nfc" name="LineageOS/android_packages_apps_Nfc" groups="apps_nfc,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/OneTimeInitializer" name="platform/packages/apps/OneTimeInitializer" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/PackageInstaller" name="LineageOS/android_packages_apps_PackageInstaller" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/PhoneCommon" name="LineageOS/android_packages_apps_PhoneCommon" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Provision" name="platform/packages/apps/Provision" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/SafetyRegulatoryInfo" name="LineageOS/android_packages_apps_SafetyRegulatoryInfo" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/SecureElement" name="LineageOS/android_packages_apps_SecureElement" groups="apps_se,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Settings" name="LineageOS/android_packages_apps_Settings" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/SettingsIntelligence" name="LineageOS/android_packages_apps_SettingsIntelligence" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Stk" name="LineageOS/android_packages_apps_Stk" groups="apps_stk,pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/StorageManager" name="LineageOS/android_packages_apps_StorageManager" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Tag" name="LineageOS/android_packages_apps_Tag" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Terminal" name="LineageOS/android_packages_apps_Terminal" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/Test/connectivity" name="platform/packages/apps/Test/connectivity" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/Traceur" name="LineageOS/android_packages_apps_Traceur" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/TvSettings" name="LineageOS/android_packages_apps_TvSettings" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/apps/TV" name="platform/packages/apps/TV" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/packages/apps/UnifiedEmail" name="LineageOS/android_packages_apps_UnifiedEmail" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/experimental" name="platform/packages/experimental" remote="aosp" />
+  <project path="LineageOS-16.x/packages/inputmethods/LatinIME" name="LineageOS/android_packages_inputmethods_LatinIME" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/inputmethods/LeanbackIME" name="platform/packages/inputmethods/LeanbackIME" groups="pdk-fs" remote="aosp" revision="c15e8e709714310c8a31d83522b66493b10e22c9" />
+  <project path="LineageOS-16.x/packages/providers/BlockedNumberProvider" name="LineageOS/android_packages_providers_BlockedNumberProvider" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/BookmarkProvider" name="LineageOS/android_packages_providers_BookmarkProvider" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/CalendarProvider" name="LineageOS/android_packages_providers_CalendarProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/CallLogProvider" name="LineageOS/android_packages_providers_CallLogProvider" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/ContactsProvider" name="LineageOS/android_packages_providers_ContactsProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/DownloadProvider" name="LineageOS/android_packages_providers_DownloadProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/MediaProvider" name="LineageOS/android_packages_providers_MediaProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/PartnerBookmarksProvider" name="LineageOS/android_packages_providers_PartnerBookmarksProvider" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/TelephonyProvider" name="LineageOS/android_packages_providers_TelephonyProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/TvProvider" name="LineageOS/android_packages_providers_TvProvider" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/providers/UserDictionaryProvider" name="LineageOS/android_packages_providers_UserDictionaryProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/screensavers/Basic" name="LineageOS/android_packages_screensavers_Basic" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/screensavers/PhotoTable" name="LineageOS/android_packages_screensavers_PhotoTable" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/screensavers/WebView" name="LineageOS/android_packages_screensavers_WebView" groups="pdk-fs" />
+  <project path="LineageOS-16.x/packages/services/BuiltInPrintService" name="LineageOS/android_packages_services_BuiltInPrintService" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/services/Car" name="platform/packages/services/Car" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/services/Mms" name="LineageOS/android_packages_services_Mms" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/services/NetworkRecommendation" name="platform/packages/services/NetworkRecommendation" groups="pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/packages/services/Telecomm" name="LineageOS/android_packages_services_Telecomm" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/services/Telephony" name="LineageOS/android_packages_services_Telephony" groups="pdk-cw-fs,pdk-fs" />
+  <project path="LineageOS-16.x/packages/wallpapers/LivePicker" name="LineageOS/android_packages_wallpapers_LivePicker" groups="pdk-fs" />
+  <project path="LineageOS-16.x/pdk" name="platform/pdk" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/platform_testing" name="platform/platform_testing" groups="pdk-fs,pdk-cw-fs,cts" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="pdk-fs" clone-depth="1" remote="aosp" revision="06eee4ea9420741f2e80497568fc6fd10ec5430f" />
+  <project path="LineageOS-16.x/prebuilts/abi-dumps/vndk" name="LineageOS/android_prebuilts_abi-dumps_vndk" groups="pdk-fs" clone-depth="1" />
+  <project path="LineageOS-16.x/prebuilts/android-emulator" name="platform/prebuilts/android-emulator" groups="pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/build-tools" name="LineageOS/android_prebuilts_build-tools" groups="pdk" clone-depth="1" />
+  <project path="LineageOS-16.x/prebuilts/checkcolor" name="platform/prebuilts/checkcolor" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/checkstyle" name="platform/prebuilts/checkstyle" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/clang-tools" name="platform/prebuilts/clang-tools" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/clang/host/darwin-x86" name="platform/prebuilts/clang/host/darwin-x86" groups="pdk,darwin" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/deqp" name="platform/prebuilts/deqp" groups="pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/devtools" name="platform/prebuilts/devtools" groups="pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" groups="pdk,darwin,arm" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" groups="pdk,darwin,arm" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" name="platform/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" groups="pdk,darwin" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" groups="pdk,darwin,x86" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" groups="pdk,linux,arm" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" groups="pdk,linux,arm" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" groups="pdk,linux" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" groups="pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" groups="pdk,linux,x86" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gdb/darwin-x86" name="platform/prebuilts/gdb/darwin-x86" groups="darwin" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gdb/linux-x86" name="platform/prebuilts/gdb/linux-x86" groups="linux" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/go/darwin-x86" name="platform/prebuilts/go/darwin-x86" groups="darwin,pdk,tradefed" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/go/linux-x86" name="platform/prebuilts/go/linux-x86" groups="linux,pdk,tradefed" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/gradle-plugin" name="platform/prebuilts/gradle-plugin" groups="pdk,pdk-cw-fs,pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/jdk/jdk8" name="platform/prebuilts/jdk/jdk8" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/jdk/jdk9" name="platform/prebuilts/jdk/jdk9" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/libs/libedit" name="platform/prebuilts/libs/libedit" groups="pdk-cw-fs,pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/maven_repo/android" name="platform/prebuilts/maven_repo/android" groups="pdk-cw-fs,pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/maven_repo/bumptech" name="platform/prebuilts/maven_repo/bumptech" groups="pdk-cw-fs,pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/misc" name="platform/prebuilts/misc" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/ktlint" name="platform/prebuilts/ktlint" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/python/darwin-x86/2.7.5" name="platform/prebuilts/python/darwin-x86/2.7.5" groups="darwin,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/python/linux-x86/2.7.5" name="platform/prebuilts/python/linux-x86/2.7.5" groups="linux,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/qemu-kernel" name="platform/prebuilts/qemu-kernel" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/r8" name="platform/prebuilts/r8" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/sdk" name="platform/prebuilts/sdk" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/tools" name="platform/prebuilts/tools" groups="pdk,tools" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/prebuilts/vndk/v27" name="platform/prebuilts/vndk/v27" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/sdk" name="platform/sdk" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/system/bt" name="LineageOS/android_system_bt" groups="pdk" />
+  <project path="LineageOS-16.x/system/ca-certificates" name="platform/system/ca-certificates" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/chre" name="platform/system/chre" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/connectivity/wificond" name="LineageOS/android_system_connectivity_wificond" groups="pdk" />
+  <project path="LineageOS-16.x/system/connectivity/wifilogd" name="platform/system/connectivity/wifilogd" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/core" name="LineageOS/android_system_core" groups="pdk" />
+  <project path="LineageOS-16.x/system/extras" name="LineageOS/android_system_extras" groups="pdk" />
+  <project path="LineageOS-16.x/system/gatekeeper" name="platform/system/gatekeeper" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/hardware/interfaces" name="platform/system/hardware/interfaces" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/hwservicemanager" name="platform/system/hwservicemanager" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/iot/attestation" name="platform/system/iot/attestation" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/keymaster" name="LineageOS/android_system_keymaster" groups="pdk" />
+  <project path="LineageOS-16.x/system/libfmq" name="LineageOS/android_system_libfmq" groups="pdk" />
+  <project path="LineageOS-16.x/system/libhidl" name="platform/system/libhidl" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/libhwbinder" name="LineageOS/android_system_libhwbinder" groups="pdk" />
+  <project path="LineageOS-16.x/system/libufdt" name="platform/system/libufdt" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/libvintf" name="platform/system/libvintf" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/media" name="LineageOS/android_system_media" groups="pdk" />
+  <project path="LineageOS-16.x/system/netd" name="LineageOS/android_system_netd" groups="pdk" />
+  <project path="LineageOS-16.x/system/nfc" name="LineageOS/android_system_nfc" groups="pdk" />
+  <project path="LineageOS-16.x/system/nvram" name="platform/system/nvram" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/system/security" name="LineageOS/android_system_security" groups="pdk" />
+  <project path="LineageOS-16.x/system/sepolicy" name="LineageOS/android_system_sepolicy" groups="pdk" />
+  <project path="LineageOS-16.x/system/timezone" name="LineageOS/android_system_timezone" groups="pdk" />
+  <project path="LineageOS-16.x/system/tools/aidl" name="LineageOS/android_system_tools_aidl" groups="pdk" />
+  <project path="LineageOS-16.x/system/tools/hidl" name="LineageOS/android_system_tools_hidl" groups="pdk" />
+  <project path="LineageOS-16.x/system/tpm" name="platform/system/tpm" remote="aosp" />
+  <project path="LineageOS-16.x/system/update_engine" name="LineageOS/android_system_update_engine" groups="pdk" />
+  <project path="LineageOS-16.x/system/vold" name="LineageOS/android_system_vold" groups="pdk" />
+  <project path="LineageOS-16.x/test/framework" name="platform/test/framework" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/suite_harness" name="platform/test/suite_harness" groups="cts,pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/test/vti/dashboard" name="platform/test/vti/dashboard" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vti/fuzz_test_serving" name="platform/test/vti/fuzz_test_serving" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vti/test_serving" name="platform/test/vti/test_serving" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts" name="platform/test/vts" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/fuzz" name="platform/test/vts-testcase/fuzz" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/hal" name="platform/test/vts-testcase/hal" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/hal-trace" name="platform/test/vts-testcase/hal-trace" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/kernel" name="platform/test/vts-testcase/kernel" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/nbu" name="platform/test/vts-testcase/nbu" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/performance" name="platform/test/vts-testcase/performance" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/security" name="platform/test/vts-testcase/security" groups="vts,pdk" remote="aosp" />
+  <project path="LineageOS-16.x/test/vts-testcase/vndk" name="LineageOS/android_test_vts-testcase_vndk" groups="vts,pdk" />
+  <project path="LineageOS-16.x/toolchain/benchmark" name="toolchain/benchmark" remote="aosp" />
+  <project path="LineageOS-16.x/toolchain/binutils" name="toolchain/binutils" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/toolchain/pgo-profiles" name="toolchain/pgo-profiles" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/tools/acloud" name="platform/tools/acloud" groups="tools,vts,pdk,tradefed" remote="aosp" />
+  <project path="LineageOS-16.x/tools/appbundle" name="platform/tools/appbundle" remote="aosp" />
+  <project path="LineageOS-16.x/tools/adt/idea" name="platform/tools/adt/idea" groups="notdefault,tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/apksig" name="platform/tools/apksig" groups="pdk,tradefed" remote="aosp" />
+  <project path="LineageOS-16.x/tools/apkzlib" name="platform/tools/apkzlib" groups="pdk,tradefed" remote="aosp" />
+  <project path="LineageOS-16.x/tools/base" name="platform/tools/base" groups="notdefault,tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/build" name="platform/tools/build" groups="notdefault,tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/dexter" name="platform/tools/dexter" groups="tools,pdk-fs" remote="aosp" />
+  <project path="LineageOS-16.x/tools/external/fat32lib" name="platform/tools/external/fat32lib" groups="tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/external/gradle" name="platform/tools/external/gradle" groups="tools" clone-depth="1" remote="aosp" />
+  <project path="LineageOS-16.x/tools/idea" name="platform/tools/idea" groups="notdefault,tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/loganalysis" name="platform/tools/loganalysis" groups="nopresubmit,pdk,tradefed" remote="aosp" />
+  <project path="LineageOS-16.x/tools/metalava" name="platform/tools/metalava" groups="pdk,tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/motodev" name="platform/tools/motodev" groups="notdefault,motodev" remote="aosp" />
+  <project path="LineageOS-16.x/tools/repohooks" name="platform/tools/repohooks" groups="adt-infra,cts,developers,motodev,pdk,tools,tradefed" remote="aosp" />
+  <project path="LineageOS-16.x/tools/studio/cloud" name="platform/tools/studio/cloud" groups="notdefault,tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/swt" name="platform/tools/swt" groups="notdefault,tools" remote="aosp" />
+  <project path="LineageOS-16.x/tools/test/connectivity" name="platform/tools/test/connectivity" groups="pdk" remote="aosp" />
+  <project path="LineageOS-16.x/tools/tradefederation/contrib" name="platform/tools/tradefederation/contrib" groups="pdk,tradefed" remote="aosp" />
+  <project path="LineageOS-16.x/tools/tradefederation/core" name="platform/tools/tradefederation" groups="pdk,tradefed" remote="aosp" />
+
+  <include name="lineage-16.0-snippets.xml" />
+
+  <repo-hooks in-project="platform/tools/repohooks" enabled-list="pre-upload" />
+
+</manifest>
