@@ -1,5 +1,7 @@
 # manifest
 
+[mainfest format](https://gerrit.googlesource.com/git-repo/+/HEAD/docs/manifest-format.md)
+
 repo init manifest
 
 ```
