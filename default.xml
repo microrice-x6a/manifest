@@ -5,11 +5,13 @@
   <remote name="LineageOS" fetch="https://github.com/LineageOS/" />
   <default remote="phh" revision="android-9.0" sync-j="4" />
 
-  <project path="LineageOS-16.x" name="android" remote="LineageOS" sync-c="true" clone-depth="1" revision="lineage-16.0" />
+  <project path="LineageOS-16.x" name="android" remote="LineageOS" revision="lineage-16.0" />
   <project path="build_scripts" name="build_scripts" remote="microrice-x6a" revision="main" />
+  <project path="treble_experimentations" name="treble_experimentations" remote="microrice-x6a" revision="master" />
   <project path="LineageOS-16.x/vendor/hardware_overlay" name="vendor_hardware_overlay" remote="microrice-x6a" revision="main" />
-  <!-- <project path="LineageOS-16.x/device/phh/treble" name="device_phh_treble" remote="phh" revision="android-9.0" />
+  <project path="LineageOS-16.x/device/phh/treble" name="device_phh_treble" remote="phh" revision="android-9.0" />
   <project path="LineageOS-16.x/vendor/vndk" name="vendor_vndk" remote="phh" revision="master" />
-  <project path="LineageOS-16.x/vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" /> -->
+  <project path="LineageOS-16.x/vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" />
+  <project path="LineageOS-16.x/vendor/interfaces" name="vendor_interfaces" remote="phh" revision="pie" />
   <project path="LineageOS-16.x/vendor/magisk" name="vendor_magisk" remote="microrice-x6a" revision="main" />
 </manifest>
