@@ -21,19 +21,19 @@
   <!-- AOSP Projects -->
 
   <project path="LineageOS-16.x/build/make" name="LineageOS/android_build" groups="pdk" >
-    <copyfile src="core/root.mk" dest="Makefile" />
-    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
-    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
-    <linkfile src="core" dest="build/core" />
-    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
-    <linkfile src="target" dest="build/target" />
-    <linkfile src="tools" dest="build/tools" />
+    <copyfile src="core/root.mk" dest="LineageOS-16.x/Makefile" />
+    <linkfile src="CleanSpec.mk" dest="LineageOS-16.x/build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="LineageOS-16.x/build/buildspec.mk.default" />
+    <linkfile src="core" dest="LineageOS-16.x/build/core" />
+    <linkfile src="envsetup.sh" dest="LineageOS-16.x/build/envsetup.sh" />
+    <linkfile src="target" dest="LineageOS-16.x/build/target" />
+    <linkfile src="tools" dest="LineageOS-16.x/build/tools" />
   </project>
   <project path="LineageOS-16.x/build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" remote="aosp" />
   <project path="LineageOS-16.x/build/kati" name="LineageOS/android_build_kati" groups="pdk,tradefed" />
   <project path="LineageOS-16.x/build/soong" name="LineageOS/android_build_soong" groups="pdk,tradefed" >
-    <linkfile src="root.bp" dest="Android.bp" />
-    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+    <linkfile src="root.bp" dest="LineageOS-16.x/Android.bp" />
+    <linkfile src="bootstrap.bash" dest="LineageOS-16.x/bootstrap.bash" />
   </project>
   <project path="LineageOS-16.x/art" name="LineageOS/android_art" groups="pdk" />
   <project path="LineageOS-16.x/bionic" name="LineageOS/android_bionic" groups="pdk" />
@@ -429,8 +429,8 @@
   <project path="LineageOS-16.x/hardware/qcom/neuralnetworks/hvxservice" name="platform/hardware/qcom/neuralnetworks/hvxservice" groups="wahoo" remote="aosp" />
   <project path="LineageOS-16.x/hardware/qcom/sdm710/data/ipacfg-mgr" name="platform/hardware/qcom/sdm710/data/ipacfg-mgr" groups="vendor,qcom_sdm710" remote="aosp" />
   <project path="LineageOS-16.x/hardware/qcom/sdm710/display" name="LineageOS/android_hardware_qcom_sdm710_display" groups="qcom_sdm710" >
-    <linkfile src="os_pickup.mk" dest="hardware/qcom/sdm710/Android.mk" />
-    <linkfile src="os_pickup.bp" dest="hardware/qcom/sdm710/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="LineageOS-16.x/hardware/qcom/sdm710/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="LineageOS-16.x/hardware/qcom/sdm710/Android.bp" />
   </project>
   <project path="LineageOS-16.x/hardware/qcom/sdm710/gps" name="platform/hardware/qcom/sdm710/gps" groups="qcom_sdm710" remote="aosp" />
   <project path="LineageOS-16.x/hardware/qcom/sdm710/media" name="platform/hardware/qcom/sdm710/media" groups="qcom_sdm710" remote="aosp" />
@@ -438,8 +438,8 @@
   <project path="LineageOS-16.x/hardware/qcom/sdm710/vr" name="platform/hardware/qcom/sdm710/vr" groups="qcom_sdm710" remote="aosp" />
   <project path="LineageOS-16.x/hardware/qcom/sdm845/bt" name="LineageOS/android_hardware_qcom_sdm845_bt" groups="qcom_sdm845" />
   <project path="LineageOS-16.x/hardware/qcom/sdm845/data/ipacfg-mgr" name="LineageOS/android_hardware_qcom_sdm845_data_ipacfg-mgr" groups="vendor,qcom_sdm845" >
-    <linkfile src="os_pickup.mk" dest="hardware/qcom/sdm845/Android.mk" />
-    <linkfile dest="hardware/qcom/sdm845/Android.bp" src="os_pickup.bp" />
+    <linkfile src="os_pickup.mk" dest="LineageOS-16.x/hardware/qcom/sdm845/Android.mk" />
+    <linkfile dest="LineageOS-16.x/hardware/qcom/sdm845/Android.bp" src="os_pickup.bp" />
   </project>
   <project path="LineageOS-16.x/hardware/qcom/sdm845/display" name="LineageOS/android_hardware_qcom_sdm845_display" groups="qcom_sdm845" />
   <project path="LineageOS-16.x/hardware/qcom/sdm845/gps" name="LineageOS/android_hardware_qcom_sdm845_gps" groups="qcom_sdm845" />
