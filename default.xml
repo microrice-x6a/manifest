@@ -5,7 +5,7 @@
   <remote name="LineageOS" fetch="https://github.com/LineageOS/" />
   <default remote="phh" revision="android-9.0" sync-j="4" />
 
-  <project path="LineageOS-16.x" name="android" remote="LineageOS" sync-c clone-depth=1 revision="lineage-16.0" />
+  <project path="LineageOS-16.x" name="android" remote="LineageOS" sync-c="true" clone-depth=1 revision="lineage-16.0" />
   <project path="build_scripts" name="build_scripts" remote="microrice-x6a" revision="main" />
   <project path="LineageOS-16.x/vendor/hardware_overlay" name="vendor_hardware_overlay" remote="microrice-x6a" revision="pie" />
   <!-- <project path="LineageOS-16.x/device/phh/treble" name="device_phh_treble" remote="phh" revision="android-9.0" />
