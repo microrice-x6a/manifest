@@ -9,7 +9,7 @@
   <project path="lineage_build_unified" name="lineage_build_unified" remote="microrice-x6a" revision="lineage-16.0" />
   <project path="LineageOS-16.x/vendor/hardware_overlay" name="vendor_hardware_overlay" remote="phh" revision="pie" />
   <project path="LineageOS-16.x/device/phh/treble" name="device_phh_treble" remote="phh" revision="android-9.0" />
-  <project path="LineageOS-16.x/device/xiaomi/x6a" name="device_xiaomi_x6a" remote="microrice-x6a" revision="main" />
+  <project path="LineageOS-16.x/device/xiaomi/x6a" name="device_xiaomi_x6a" remote="microrice-x6a" revision="master" />
   <project path="LineageOS-16.x/vendor/vndk" name="vendor_vndk" remote="phh" revision="master" />
   <project path="LineageOS-16.x/vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" />
   <project path="LineageOS-16.x/vendor/interfaces" name="vendor_interfaces" remote="phh" revision="pie" />
